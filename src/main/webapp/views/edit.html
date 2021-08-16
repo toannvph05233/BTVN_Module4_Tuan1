@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    <table>
+        <tr>
+            <td><input th:field="${product.id}"></td>
+            // tự động sinh ra name = "name" , id = "name" , value = "*{name}"
+            <td><input th:field="${product.name}"></td>
+            <td><input th:field="${product.img}"></td>
+            <td><input th:field="${product.price}"></td>
+            <td><input type="date" th:field="${product.date}"></td>
+            <td><select th:field="${product.catergory.id}">
+                <option value="1">oto</option>
+                <option value="2">moto</option>
+            </select></td>
+            <td>
+                <button type="submit">Edit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
