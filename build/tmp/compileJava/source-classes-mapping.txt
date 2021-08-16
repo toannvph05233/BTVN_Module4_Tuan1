@@ -1,12 +1,12 @@
 model/Product.java
  model.Product
-config/ApplicationInitializer.java
- config.ApplicationInitializer
+service/ProductService.java
+ service.ProductService
 model/Catergory.java
  model.Catergory
 config/ApplicationConfig.java
  config.ApplicationConfig
-service/ProductService.java
- service.ProductService
+config/ApplicationInitializer.java
+ config.ApplicationInitializer
 controller/ProductControler.java
  controller.ProductControler

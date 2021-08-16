@@ -1,5 +1,7 @@
 package model;
 
+import org.springframework.lang.NonNull;
+
 import java.sql.Date;
 
 public class Product {
