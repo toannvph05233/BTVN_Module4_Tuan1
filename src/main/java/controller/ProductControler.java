@@ -2,6 +2,7 @@ package controller;
 
 import model.Catergory;
 import model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +18,13 @@ import java.io.IOException;
 
 @Controller
 public class ProductControler {
-    ProductService productService = new ProductService();
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/products")
     public ModelAndView show() {
         ModelAndView modelAndView = new ModelAndView("show");
+        productService.findAll();
         modelAndView.addObject("listProduct", productService.list);
         return modelAndView;
     }
@@ -45,7 +48,7 @@ public class ProductControler {
     }
 
     @PostMapping("/edit")
-    public String editPost(@RequestParam MultipartFile uppImg, @RequestParam int index, @ModelAttribute("p") Product product, @RequestParam("catergory.id") int catergoryId) {
+    public String editPost(@RequestParam MultipartFile uppImg, @RequestParam int index, @ModelAttribute("p") Product product) {
         String nameImg = uppImg.getOriginalFilename();
         try {
             FileCopyUtils.copy(uppImg.getBytes(), new File("/Users/johntoan98gmail.com/Desktop/project/Module4/BTVN_Module4_Tuan1/src/main/webapp/file/" + nameImg));
@@ -55,11 +58,27 @@ public class ProductControler {
             System.err.println("chưa uppload file");
         }
 
-        Catergory catergory = new Catergory(catergoryId, "abc");
-        product.setCatergory(catergory);
-        productService.edit(product, index);
+        productService.edit(product);
         return "redirect:/products";
     }
+
+    @PostMapping("/create")
+    public String create(@RequestParam MultipartFile uppImg, @ModelAttribute Product product) {
+        String nameImg = uppImg.getOriginalFilename();
+        try {
+            FileCopyUtils.copy(uppImg.getBytes(), new File("/Users/johntoan98gmail.com/Desktop/project/Module4/BTVN_Module4_Tuan1/src/main/webapp/file/" + nameImg));
+            String urlImg = "/i/file/" + nameImg;
+            product.setImg(urlImg);
+        } catch (IOException e) {
+            System.err.println("chưa uppload file");
+        }
+
+        productService.seve(product);
+        return "redirect:/products";
+    }
+
+
+
 
     @PostMapping("/uppFile")
     public String uppFile(@RequestParam MultipartFile uppImg) {

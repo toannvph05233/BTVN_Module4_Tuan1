@@ -12,7 +12,6 @@
         <td><img th:src="${product.img}" width="300" height="250"></td>
         <td th:text="${product.price}"></td>
         <td th:text="${product.date}"></td>
-        <td th:text="${product.catergory.name}"></td>
         <td><a th:href="@{/edit(index = ${loop.index})}">Edit</a></td>
         <td><a th:href="@{/delete(index = ${loop.index})}">Delete</a></td>
     </tr>

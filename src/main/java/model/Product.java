@@ -2,26 +2,30 @@ package model;
 
 import org.springframework.lang.NonNull;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+//@Table(name = "product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String name;
     private String img;
     private double price;
     private Date date;
-    private Catergory catergory;
+
 
     public Product() {
     }
 
-    public Product(int id, String name, String img, double price, Date date, Catergory catergory) {
+    public Product(int id, String name, String img, double price, Date date) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.price = price;
         this.date = date;
-        this.catergory = catergory;
     }
 
     public Date getDate() {
@@ -64,11 +68,4 @@ public class Product {
         this.price = price;
     }
 
-    public Catergory getCatergory() {
-        return catergory;
-    }
-
-    public void setCatergory(Catergory catergory) {
-        this.catergory = catergory;
-    }
 }

@@ -1,12 +1,16 @@
-model/Product.java
- model.Product
-service/ProductService.java
- service.ProductService
 model/Catergory.java
  model.Catergory
-config/ApplicationConfig.java
- config.ApplicationConfig
-config/ApplicationInitializer.java
- config.ApplicationInitializer
+model/Product.java
+ model.Product
+repository/IProducRepo.java
+ repository.IProducRepo
+repository/ProductRepo.java
+ repository.ProductRepo
 controller/ProductControler.java
  controller.ProductControler
+config/ApplicationInitializer.java
+ config.ApplicationInitializer
+config/ApplicationConfig.java
+ config.ApplicationConfig
+service/ProductService.java
+ service.ProductService
